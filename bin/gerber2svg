@@ -1,8 +1,0 @@
-#!/usr/bin/env node
-
-var fs = require('fs');
-var path = require('path');
-var lib = path.join(__dirname, '../lib');
-
-// run the command
-require(lib + '/command')();
