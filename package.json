@@ -1,6 +1,6 @@
 {
   "name": "gerber-to-svg",
-  "version": "4.2.8",
+  "version": "4.2.9",
   "description": "Render individual Gerber / NC drill files as SVGs",
   "main": "index.js",
   "types": "index.d.ts",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/tracespace/tracespace.git",
+    "url": "git://github.com/MacroFab/tracespace.git",
     "directory": "packages/gerber-to-svg"
   },
   "keywords": [
