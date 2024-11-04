@@ -1,17 +1,19 @@
 {
   "name": "gerber-to-svg",
-  "version": "0.4.2",
-  "description": "Gerber and NC drill file to SVG converter",
-  "main": "dist/gerber-to-svg.js",
-  "bin": {
-    "gerber2svg": "bin/gerber2svg"
-  },
+  "version": "4.2.8",
+  "description": "Render individual Gerber / NC drill files as SVGs",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "gulp test"
+    "example": "node example",
+    "start": "node integration/server",
+    "build": "cross-env NODE_ENV=production webpack",
+    "serve": "node ../../scripts/serve"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/MacroFab/gerber-to-svg.git"
+    "url": "git://github.com/tracespace/tracespace.git",
+    "directory": "packages/gerber-to-svg"
   },
   "keywords": [
     "svg",
@@ -19,41 +21,31 @@
     "excellon",
     "drill",
     "pcb",
-    "circuit"
+    "circuit",
+    "board",
+    "hardware",
+    "electronics",
+    "electrical",
+    "maker"
   ],
-  "author": "Mike Cousins <mike@cousins.io> (http://cousins.io)",
+  "contributors": [
+    "Mike Cousins <mike@cousins.io> (https://mike.cousins.io/)",
+    "Kaspar Emanuel <kaspar@monostable.co.uk> (http://monostable.co.uk)"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mcous/gerber-to-svg/issues"
+    "url": "https://github.com/tracespace/tracespace/issues"
   },
-  "homepage": "https://github.com/mcous/gerber-to-svg",
-  "devDependencies": {
-    "brfs": "^1.2.0",
-    "browserify": "9.0.3",
-    "chai": "2.2.0",
-    "coffee-script": "^1.7.1",
-    "traceur": "latest",
-    "coffeeify": "^1.0.0",
-    "glob": "5.0.3",
-    "gulp": "^3.8.11",
-    "gulp-coffee": "^2.0.1",
-    "gulp-coffee-istanbul": "latest",
-    "gulp-coffeelint": "^0.4.0",
-    "gulp-coveralls": "^0.1.2",
-    "gulp-mocha": "^2.0.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-streamify": "0.0.5",
-    "gulp-uglify": "^1.0.1",
-    "gulp-util": "^3.0.1",
-    "jquery": "^2.1.1",
-    "node-static": "^0.7.4",
-    "phantomjs": "^1.9.16",
-    "vinyl-source-stream": "^1.0.0",
-    "zuul": "2.1.1"
-  },
+  "homepage": "https://github.com/tracespace/tracespace#readme",
   "dependencies": {
-    "chalk": "1.0.0",
-    "minimatch": "2.0.4",
-    "minimist": "^1.1.0"
+    "@tracespace/xml-id": "^4.2.7",
+    "@types/node": "^13.1.6",
+    "escape-html": "^1.0.3",
+    "gerber-parser": "^4.2.7",
+    "gerber-plotter": "^4.2.8",
+    "inherits": "^2.0.4",
+    "lodash.isfinite": "^3.3.2",
+    "readable-stream": "^3.4.0",
+    "xml-element-string": "^1.0.0"
   }
 }
