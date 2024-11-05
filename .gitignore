@@ -7,3 +7,5 @@ node_modules/
 *~
 pnpm-lock.yaml
 package-lock.json
+coverage
+.nyc_output

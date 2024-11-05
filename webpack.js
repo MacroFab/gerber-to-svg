@@ -1,16 +1,14 @@
+// webpack config helpers
 "use strict";
 
 const path = require("path");
-const merge = require("webpack-merge");
-
-// webpack config helpers
-("use strict");
-
 const HtmlPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const merge = require("webpack-merge");
+
 const DEV_MODE = process.env.NODE_ENV !== "production";
 const ANALYZER = Boolean(process.env.ANALYZER);
 const OUT_DIRNAME = "dist";
@@ -62,11 +60,10 @@ const browserScriptConfig = dirname =>
     ]
   });
 
-module.exports = merge(browserScriptConfig(__dirname), {
-  entry: {
-    "gerber-to-svg": path.join(__dirname, "index.js")
-  },
-  output: {
-    library: "gerberToSvg"
-  }
-});
+module.exports = {
+  DEV_MODE,
+  ANALYZER,
+  OUT_DIRNAME,
+  baseConfig,
+  browserScriptConfig
+};
