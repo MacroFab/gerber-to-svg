@@ -35,7 +35,7 @@ Or, use a script tag:
 <script src="https://unpkg.com/gerber-to-svg@^4.0.0/dist/gerber-to-svg.min.js"></script>
 <script>
   // global variable gerberToSvg now available
-  var converter = gerberToSvg(input)
+  var converter = gerberToSvg(input);
 </script>
 ```
 
@@ -57,8 +57,8 @@ Arduino Uno design files used here under the terms of the [Creative Commons Attr
 ## usage
 
 ```js
-var gerberToSvg = require('gerber-to-svg')
-var converter = gerberToSvg(input, options, [callback])
+var gerberToSvg = require("gerber-to-svg");
+var converter = gerberToSvg(input, options, [callback]);
 ```
 
 See [the API documentation](./API.md) for full details.

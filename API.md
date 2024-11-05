@@ -3,8 +3,8 @@
 Create a gerber-to-svg converter like:
 
 ```javascript
-var gerberToSvg = require('gerber-to-svg')
-var converter = gerberToSvg(input, [options, [callback]])
+var gerberToSvg = require("gerber-to-svg");
+var converter = gerberToSvg(input, [options, [callback]]);
 ```
 
 - [input](#input)
@@ -33,17 +33,17 @@ var converter = gerberToSvg(input, [options, [callback]])
 The function can either take a utf8 encoded string or a utf8 encoded readable-stream. For example:
 
 ```javascript
-var gerberToSvg = require('gerber-to-svg')
-var fs = require('fs')
+var gerberToSvg = require("gerber-to-svg");
+var fs = require("fs");
 
 // input a readable-stream
-var gerberStream = fs.createReadStream('/path/to/file.gbr')
-var streamConverter = gerberToSvg(gerberStream)
+var gerberStream = fs.createReadStream("/path/to/file.gbr");
+var streamConverter = gerberToSvg(gerberStream);
 
 // input a string
-fs.readFile('/path/to/file.gbr', function(error, gerberString) {
-  var stringConverter = gerberToSvg(gerberString)
-})
+fs.readFile("/path/to/file.gbr", function(error, gerberString) {
+  var stringConverter = gerberToSvg(gerberString);
+});
 ```
 
 ### options
@@ -125,14 +125,16 @@ For more information, please reference the API documentation of [gerber-parser](
 The object returned by the function is a [readable-stream](https://nodejs.org/api/stream.html#stream_class_stream_readable). That means that the normal `data`, `readable`, `error`, etc. events are present, as well as the `pipe` method.
 
 ```javascript
-var gerberToSvg = require('gerber-to-svg')
-var fs = require('fs')
+var gerberToSvg = require("gerber-to-svg");
+var fs = require("fs");
 
-var gerberStream = fs.createReadStream('/path/to/file.gbr', {encoding: 'utf8'})
-var streamConverter = gerberToSvg(gerberStream, 'my-gerber-file')
+var gerberStream = fs.createReadStream("/path/to/file.gbr", {
+  encoding: "utf8"
+});
+var streamConverter = gerberToSvg(gerberStream, "my-gerber-file");
 
 // pipe the output to the stdout stream
-streamConverter.pipe(process.stdout)
+streamConverter.pipe(process.stdout);
 ```
 
 ## callback API
@@ -140,25 +142,25 @@ streamConverter.pipe(process.stdout)
 Alternatively, if you don't like streams, you may pass in a callback function to be called when the conversion is complete. It is passed any error that occurred, and the result of the conversion if no error. The function will still return a readable-stream.
 
 ```javascript
-var gerberToSvg = require('gerber-to-svg')
-var fs = require('fs')
+var gerberToSvg = require("gerber-to-svg");
+var fs = require("fs");
 
-fs.readFile('/path/to/file.gbr', {encoding: 'utf8'}, function(
+fs.readFile("/path/to/file.gbr", { encoding: "utf8" }, function(
   fsError,
   gerberString
 ) {
   if (fsError) {
-    return console.error('fs read error - ' + fsError.message)
+    return console.error("fs read error - " + fsError.message);
   }
 
-  gerberToSvg(gerberString, 'my-gerber-file', function(error, svg) {
+  gerberToSvg(gerberString, "my-gerber-file", function(error, svg) {
     if (error) {
-      return console.error('gerber to svg error - ' + error.message)
+      return console.error("gerber to svg error - " + error.message);
     }
 
-    console.log(svg)
-  })
-})
+    console.log(svg);
+  });
+});
 ```
 
 ## static methods
@@ -172,16 +174,16 @@ Clones the public properties of a converter (expect for `parser` and `plotter`) 
 `gerberToSvg.clone(converter)`
 
 ```javascript
-var gerberToSvg = require('gerber-to-svg')
-var cloneConverter = gerberToSvg.clone
+var gerberToSvg = require("gerber-to-svg");
+var cloneConverter = gerberToSvg.clone;
 
 // or, for smaller builds
-var cloneConverter = require('gerber-to-svg/clone')
+var cloneConverter = require("gerber-to-svg/clone");
 
 var converter = gerberToSvg(input, options, function(error, result) {
-  var converterClone = cloneConverter(converter)
-  storeSomehow(converterClone)
-})
+  var converterClone = cloneConverter(converter);
+  storeSomehow(converterClone);
+});
 ```
 
 ### render
@@ -200,16 +202,16 @@ Returns the SVG from a completed converter or a clone of a completed `converter`
 - `includeNamespace` is an optional flag that determines whether the xmlns attribute is passed to `createElement` (defaults to `true`)
 
 ```javascript
-var gerberToSvg = require('gerber-to-svg')
-var renderConverter = gerberToSvg.render
+var gerberToSvg = require("gerber-to-svg");
+var renderConverter = gerberToSvg.render;
 
 // or, for smaller builds
-var renderConverter = require('gerber-to-svg/render')
+var renderConverter = require("gerber-to-svg/render");
 
-var converter = getConverterCloneSomehow()
-var id = 'my-cool-id'
+var converter = getConverterCloneSomehow();
+var id = "my-cool-id";
 
-var svgString = renderConverter(converter, id)
+var svgString = renderConverter(converter, id);
 ```
 
 ## events
@@ -228,9 +230,9 @@ The returned object can also emit `warning` events. The warning object passed to
 Warnings are non-fatal, but if they are present, it may be an indication of an incorrect or unexpected render. Generally, if the warning message says something about a "deprecated" command, you don't need to worry. If the message says something about an "arc" or a "flash" being "ignored", or anything being "assumed", you may get unexpected results. Most likely this is the result of poorly generated Gerber file.
 
 ```javascript
-converter.on('warning', function(w) {
-  console.warn('warning on line ' + w.line + ' - ' + w.message)
-})
+converter.on("warning", function(w) {
+  console.warn("warning on line " + w.line + " - " + w.message);
+});
 ```
 
 ## output
