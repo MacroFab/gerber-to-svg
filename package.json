@@ -47,7 +47,7 @@
     "@types/node": "^13.1.6",
     "bdd": "^1.0.1",
     "escape-html": "^1.0.3",
-    "gerber-parser": "^4.2.7",
+    "gerber-parser": "git+ssh://git@github.com/MacroFab/gerber-parser.git#ragex",
     "gerber-plotter": "^4.2.8",
     "inherits": "^2.0.4",
     "lodash.isfinite": "^3.3.2",
